@@ -15,6 +15,7 @@
       <div class="container">
           <h1 style="text-align: center;color: green;vertical-align: middle;line-height: 200px ">WELCOME TO REMAINDER</h1>
           <example-component></example-component>
+          <router-view></router-view>
       </div> 
     </section>
 @endsection('content')
