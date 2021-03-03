@@ -7,6 +7,7 @@
 
                     <div class="card-body">
                         I'm an example component.
+                        <demo></demo>
                     </div>
                 </div>
             </div>
@@ -15,6 +16,7 @@
 </template>
 
 <script>
+    Vue.component('demo', require('./components/DemoComponent.vue').default);
     export default {
         mounted() {
             console.log('Component mounted.')
