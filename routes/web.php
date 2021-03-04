@@ -27,3 +27,6 @@ Route::post('/student/getAllStudent', 'Backend\StudentController@getAllStudent')
 Route::resource('/teacher', 'Backend\TeacherController');
 Route::post('/teacher/getAllTeacher', 'Backend\TeacherController@getAllTeacher')->name('getAllTeacher');
 
+Route::get('/staff/getData', 'Backend\StaffController@getData')->name('getData');
+Route::resource('/staff', 'Backend\StaffController');
+// Route::resource('/tasks', 'Backend\TodoController');

@@ -1,5 +1,6 @@
 @extends('main.main.app')
 @section('content')
+<router-view></router-view>
 <div class="row">
 	<div class="col-md-12">
 		<div class="card">

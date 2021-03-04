@@ -14,5 +14,8 @@
     <li class="nav-item d-none d-sm-inline-block" >
       <a href="" class="nav-link">Logout</a>
     </li>
+    <li class="nav-item d-none d-sm-inline-block">
+      <router-link to="/demo" class="nav-link">Student Details</router-link>
+    </li>
   </ul>
 </nav>

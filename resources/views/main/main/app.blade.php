@@ -63,6 +63,7 @@
                     </div>
                     @endif
 
+
                     <!-- Main content -->
                     @yield('content')
                     <!-- /.content -->

@@ -40,8 +40,8 @@
         </li>
 
         <li class="nav-item">
-          <a href="" class="nav-link">
-            <i class="nav-icon fa fa-th"></i>
+          <a href="{{URL::to('/')}}/staff" class="nav-link {{ (request()->is('staff'))? 'active':''}}">
+            <i class="nav-icon fa fa-user"></i>
             <p>
               Staff
             </p>
