@@ -29,4 +29,4 @@ Route::post('/teacher/getAllTeacher', 'Backend\TeacherController@getAllTeacher')
 
 Route::get('/staff/getData', 'Backend\StaffController@getData')->name('getData');
 Route::resource('/staff', 'Backend\StaffController');
-// Route::resource('/tasks', 'Backend\TodoController');
+Route::resource('/tasks', 'Backend\TodoController');

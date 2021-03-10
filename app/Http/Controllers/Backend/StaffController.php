@@ -45,7 +45,12 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $studentss = Student::create($request->all());
+        if($studentss){
+             $students = Student::all();
+             return request()->json(200, $students);
+        }
     }
 
     /**
@@ -67,7 +72,8 @@ class StaffController extends Controller
      */
     public function edit($id)
     {
-        //
+        $students = Student::where('id', $id)->get();
+        return request()->json(200 , $students);
     }
 
     /**
@@ -79,7 +85,14 @@ class StaffController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $students = Student::find($id);
+        $students->name = $request->name;
+        $students->address = $request->address;
+        $students->phone_no = $request->phone_no;
+        if($students->update()){
+            $students = Student::all();
+            return request()->json(200, $students);   
+        }
     }
 
     /**
@@ -90,6 +103,10 @@ class StaffController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $taskss = Student::where('id', $id);
+        if($taskss->delete()){
+             $students = Student::all();
+             return request()->json(200, $students);
+        }
     }
 }
