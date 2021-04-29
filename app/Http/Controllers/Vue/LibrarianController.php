@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Vue;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Teacher;
-use Response;
+use App\Librarian;
 use Auth;
 
-class TodoController extends Controller
+class LibrarianController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,12 +16,7 @@ class TodoController extends Controller
      */
     public function index()
     {
-        return view('backend.task.index');
-    }
-
-    public function getData(){
-        $teachers=Teacher::all();
-        return request()->json(200, $teachers);
+        //
     }
 
     /**
@@ -34,6 +28,10 @@ class TodoController extends Controller
     {
         //
     }
+    public function getLibrarian(){
+       $librarians = Librarian::all();
+       return request()->json(200, $librarians);
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -43,11 +41,12 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        $teacherss = Teacher::create($request->all());
-        $teacherss['created_by'] = Auth::user()->id;
-        if($teacherss->save()){
-            $teachers=Teacher::all();
-            return request()->json(200, $teachers);
+        $librarians = Librarian::create($request->all());
+        $librarians['created_by'] = Auth::user()->id;
+        // $librarians->save();
+        if($librarians->save()){
+            $librarianss=Librarian::all();
+            return request()->json(200, $librarianss);
         }
     }
 
@@ -70,8 +69,8 @@ class TodoController extends Controller
      */
     public function edit($id)
     {
-        $teachers= Teacher::where('id', $id)->get();
-        return request()->json(200, $teachers);
+        $librarians = Librarian::where('id', $id)->get();
+        return request()->json(200 , $librarians);
     }
 
     /**
@@ -83,14 +82,14 @@ class TodoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $teachers = Teacher::find($id);
-        $teachers->name = $request->name;
-        $teachers->address = $request->address;
-        $teachers->phone_no = $request->phone_no;
-        $teachers->subject = $request->subject;
-        if($teachers->update()){
-            $teachers = Teacher::all();
-            return request()->json(200, $teachers);   
+        $librarians = Librarian::find($id);
+        $librarians->name = $request->name;
+        $librarians->address = $request->address;
+        $librarians->phone_no = $request->phone_no;
+        $librarians->gmail= $request->gmail;
+        if($librarians->update()){
+            $librarians = Librarian::all();
+            return request()->json(200, $librarians);   
         }
     }
 
@@ -102,10 +101,10 @@ class TodoController extends Controller
      */
     public function destroy($id)
     {
-        $teachers = Teacher::where('id', $id);
-        if($teachers->delete()){
-            $teachers=Teacher::all();
-            return request()->json(200, $teachers);
+        $librarians = Librarian::where('id', $id);
+        if($librarians->delete()){
+            $librarianss = Librarian::all();
+            return request()->json(200, $librarianss);
         }
     }
 }

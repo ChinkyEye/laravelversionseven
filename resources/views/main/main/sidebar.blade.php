@@ -48,10 +48,18 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{URL::to('/')}}/tasks" class="nav-link">
+          <a href="{{URL::to('/')}}/task" class="nav-link {{ (request()->is('task'))? 'active': '' }}">
             <i class="nav-icon fa fa-user"></i>
             <p>
               Show
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{URL::to('/')}}/school" class="nav-link {{ (request()->is('school'))? 'active': '' }}">
+            <i class="nav-icon fa fa-user"></i>
+            <p>
+              School
             </p>
           </a>
         </li>

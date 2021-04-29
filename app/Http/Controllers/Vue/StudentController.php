@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Vue;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Teacher;
-use Response;
+use App\Student;
 use Auth;
 
-class TodoController extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,12 +16,11 @@ class TodoController extends Controller
      */
     public function index()
     {
-        return view('backend.task.index');
+        //
     }
-
-    public function getData(){
-        $teachers=Teacher::all();
-        return request()->json(200, $teachers);
+    public function getStudent(){
+       $students = Student::all();
+       return request()->json(200, $students);
     }
 
     /**
@@ -43,11 +41,11 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        $teacherss = Teacher::create($request->all());
-        $teacherss['created_by'] = Auth::user()->id;
-        if($teacherss->save()){
-            $teachers=Teacher::all();
-            return request()->json(200, $teachers);
+        $studentss = Student::create($request->all());
+        $studentss['created_by'] = Auth::user()->id;
+        if($studentss->save()){
+            $students=Student::all();
+            return request()->json(200, $students);
         }
     }
 
@@ -70,8 +68,8 @@ class TodoController extends Controller
      */
     public function edit($id)
     {
-        $teachers= Teacher::where('id', $id)->get();
-        return request()->json(200, $teachers);
+       $students = Student::where('id', $id)->get();
+        return request()->json(200 , $students);
     }
 
     /**
@@ -83,14 +81,13 @@ class TodoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $teachers = Teacher::find($id);
-        $teachers->name = $request->name;
-        $teachers->address = $request->address;
-        $teachers->phone_no = $request->phone_no;
-        $teachers->subject = $request->subject;
-        if($teachers->update()){
-            $teachers = Teacher::all();
-            return request()->json(200, $teachers);   
+        $students = Student::find($id);
+        $students->name = $request->name;
+        $students->address = $request->address;
+        $students->phone_no = $request->phone_no;
+        if($students->update()){
+            $students = Student::all();
+            return request()->json(200, $students);   
         }
     }
 
@@ -102,10 +99,10 @@ class TodoController extends Controller
      */
     public function destroy($id)
     {
-        $teachers = Teacher::where('id', $id);
-        if($teachers->delete()){
-            $teachers=Teacher::all();
-            return request()->json(200, $teachers);
+        $taskss = Student::where('id', $id);
+        if($taskss->delete()){
+             $students = Student::all();
+             return request()->json(200, $students);
         }
     }
 }

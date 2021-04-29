@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Teacher;
+use App\Student;
 use Response;
-use Auth;
 
-class TodoController extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,12 +16,8 @@ class TodoController extends Controller
      */
     public function index()
     {
-        return view('backend.task.index');
-    }
-
-    public function getData(){
-        $teachers=Teacher::all();
-        return request()->json(200, $teachers);
+        $students=Student::all();
+        return response()->json($students);
     }
 
     /**
@@ -43,12 +38,7 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        $teacherss = Teacher::create($request->all());
-        $teacherss['created_by'] = Auth::user()->id;
-        if($teacherss->save()){
-            $teachers=Teacher::all();
-            return request()->json(200, $teachers);
-        }
+        //
     }
 
     /**
@@ -70,8 +60,7 @@ class TodoController extends Controller
      */
     public function edit($id)
     {
-        $teachers= Teacher::where('id', $id)->get();
-        return request()->json(200, $teachers);
+        //
     }
 
     /**
@@ -83,15 +72,7 @@ class TodoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $teachers = Teacher::find($id);
-        $teachers->name = $request->name;
-        $teachers->address = $request->address;
-        $teachers->phone_no = $request->phone_no;
-        $teachers->subject = $request->subject;
-        if($teachers->update()){
-            $teachers = Teacher::all();
-            return request()->json(200, $teachers);   
-        }
+        //
     }
 
     /**
@@ -102,10 +83,6 @@ class TodoController extends Controller
      */
     public function destroy($id)
     {
-        $teachers = Teacher::where('id', $id);
-        if($teachers->delete()){
-            $teachers=Teacher::all();
-            return request()->json(200, $teachers);
-        }
+        //
     }
 }

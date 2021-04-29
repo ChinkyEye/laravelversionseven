@@ -36,7 +36,38 @@
     <div class="wrapper" id="app">
 
         @include('main.main.navbar')
-        @include('main.main.sidebar')
+
+        <!-- sidebar -->
+        <aside class="main-sidebar  sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="#" class="brand-link">
+                <img src="{{URL::to('/')}}/images/download1.jpg" class="brand-image img-circle elevation-3"
+                style="opacity: .8">
+                <span class="brand-text font-weight-light">REMAINDER</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="{{URL::to('/')}}/images/gov.png" class="img-circle elevation-2" alt="User Image">
+                    </div>
+                    <div class="info">
+                        <a href="{{URL::to('/')}}/home" class="d-block">Welcome(@guest @else{{Auth::user()->name}} @endguest)</a>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <sidebar></sidebar>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+        </aside>
+
+<!-- end of sidebar -->
+
         <div class="content-wrapper">
             <div class="content-header">
                 <div class="container-fluid">
@@ -65,7 +96,7 @@
 
 
                     <!-- Main content -->
-                    @yield('content')
+                    <master></master>
                     <!-- /.content -->
                 </div>
             </section>

@@ -17,13 +17,19 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 Vue.use(VueRouter)
 
-const routes= [
-	{
-		path: '/demo',
-		component: require('./components/DemoComponent.vue').default
-	},
+// const routes= [
+// 	{
+// 		path: '/demo',
+// 		component: require('./components/DemoComponent.vue').default
+// 	},
+// 	{
+// 		path: '/',
+// 		component: require('./components/home.vue').default
+// 	},
 
-]
+// ]
+import {routes} from './routes';
+
 const router = new VueRouter({
 	routes
 })
@@ -40,6 +46,17 @@ const router = new VueRouter({
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('demos', require('./components/DemoComponent.vue').default);
+Vue.component('task', require('./components/taskComponent.vue').default);
+Vue.component('sidebar', require('./components/main/sidebar.vue').default);
+Vue.component('master', require('./components/main/Master.vue').default);
+Vue.component('home', require('./components/home.vue').default);
+// Vue.component('addTask', require('./components/addModelComponent.vue').default);
+// Vue.component('editTask', require('./components/editModelComponent.vue').default);
+Vue.component('addStudent', require('./components/student/addModelStudentComponent.vue').default);
+Vue.component('editStudent', require('./components/student/editModelStudentComponent.vue').default);
+Vue.component('addLibrarian', require('./components/librarian/addModelLibrarianComponent.vue').default);
+Vue.component('editLibrarian', require('./components/librarian/editModelLibrarianComponent.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

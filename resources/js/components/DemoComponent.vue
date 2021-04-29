@@ -61,8 +61,8 @@
 </div>
 </template>
 <script type="text/javascript">
-	Vue.component('addTask', require('./addModelComponent.vue').default);
-	Vue.component('editTask', require('./editModelComponent.vue').default);
+	// Vue.component('editTask', require('./components/editModelComponent.vue').default);
+	// Vue.component('addTask', require('./components/addModelComponent.vue').default);
 	export default{
 		data(){
 			return {
