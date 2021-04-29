@@ -27,7 +27,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        $students=Student::all();
+        return response()->json($students);
     }
 
     /**
