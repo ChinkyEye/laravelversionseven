@@ -4,29 +4,23 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Student;
-use App\School;
 use Response;
+use App\Teacher;
+use App\School;
+use Auth;
 
-class StudentController extends Controller
+class TeacherController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id=null)
     {
-        $students=Student::all();
-        $schools=School::all();
-        return $students.$schools;
-        // return response()->json($students.$schools);
-        // return Student::all();
-    }
-    public function getData()
-    {
-        $schools=School::all();
-        return response()->json($schools);
+        return $id?Teacher::find($id):Teacher::all();
+        // $teachers = Teacher::find($id);
+        // return response()->json($teachers);
     }
 
     /**
@@ -36,8 +30,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $students=Student::all();
-        return response()->json($students);
+        //
     }
 
     /**
@@ -48,7 +41,18 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request->name;
+        $schools = new School;
+        $schools->name = $request->name;
+        $schools->address = $request->address;
+        $schools->phone_no = $request->phone_no;
+        $schools->created_by = '13';
+        $schools->save();
+        if($schools){
+            return ['result'=>'data is stored'];
+        }else{
+            return ['result'=>'error'];
+        }
     }
 
     /**

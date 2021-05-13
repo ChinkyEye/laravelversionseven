@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Student;
-
+use store\Http\Controllers\Api\TeacherController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,3 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/student', 'Api\StudentController@index');
+Route::get('/school', 'Api\StudentController@getData');
+Route::get('/teacher/{id?}', 'Api\TeacherController@index');
+Route::post('/teacher/store', 'Api\TeacherController@store');
