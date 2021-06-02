@@ -39756,7 +39756,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
-      _vm._v("All Librarian Detail"),
+      _vm._v("All Librarian Details"),
       _c("span", { staticClass: "float-right" }, [
         _c(
           "a",
